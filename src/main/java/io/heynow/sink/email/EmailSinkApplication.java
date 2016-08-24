@@ -1,4 +1,4 @@
-package io.heynow;
+package io.heynow.sink.email;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
