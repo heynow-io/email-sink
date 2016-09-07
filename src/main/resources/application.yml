@@ -2,4 +2,11 @@ heynow.sink.email:
   provider: SYSTEM_OUT
   system-out.sender: dev@heynow.io
 
-spring.cloud.stream.bindings.input.destination: alertInput
+spring:
+  application:
+    name: email-sink!${heynow.sink.email.provider}
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: alertInput

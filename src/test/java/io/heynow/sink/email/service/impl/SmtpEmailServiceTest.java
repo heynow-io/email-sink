@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class SmtpEmailServiceTest {
 
-    public static final int SMTP_PORT = 25;
+    public static final int SMTP_PORT = 2763;
     private SimpleSmtpServer smtpServer;
     private EmailService service;
 
