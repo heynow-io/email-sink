@@ -14,7 +14,4 @@ hs_err_pid*
 
 #Spring starter files
 .idea
-.mvn
 *.iml
-mvnw
-mvnw.cmd
