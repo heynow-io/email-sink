@@ -4,7 +4,7 @@ heynow.sink.email:
 
 spring:
   application:
-    name: email-sink!${heynow.sink.email.provider}
+    name: email-sink
   cloud:
     stream:
       bindings:
