@@ -1,12 +1,3 @@
-heynow.sink.email:
-  provider: SYSTEM_OUT
-  system-out.sender: dev@heynow.io
-
 spring:
   application:
     name: email-sink
-  cloud:
-    stream:
-      bindings:
-        input:
-          destination: alertInput
