@@ -1,0 +1,5 @@
+heynow:
+  sink:
+    email:
+      system-out:
+        sender: test
