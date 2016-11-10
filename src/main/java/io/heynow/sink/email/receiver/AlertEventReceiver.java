@@ -2,6 +2,8 @@ package io.heynow.sink.email.receiver;
 
 import io.heynow.sink.email.model.AlertEvent;
 import io.heynow.sink.email.processor.AlertEventProcessor;
+import io.heynow.stream.manager.client.facade.StreamManagerClient;
+import io.heynow.stream.manager.client.model.Note;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -21,12 +23,11 @@ public class AlertEventReceiver {
 
 
     @StreamListener(Sink.INPUT)
-    public void handleAlertEvent(String event) {
+    public void handleAlertEvent(Note note) {
         log.info("Event received");
-        //TODO: change received event type to common data structure with header and payload
-        //TODO: extracting important data to AlertEvent
         AlertEvent alertEvent = new AlertEvent();
-        alertEvent.setPayload(event);
+        alertEvent.setOperatorId(note.getProcessingModel().getCurrent().getId());
+        alertEvent.setPayload(note.getPayload());
         eventProcessor.process(alertEvent);
     }
 }

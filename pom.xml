@@ -26,6 +26,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.heynow</groupId>
+            <artifactId>stream-manager-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter</artifactId>
         </dependency>
@@ -119,6 +124,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>nexus-heynowio-releases</id>
+            <name>nexus-heynowio-releases</name>
+            <url>https://nexus-heynowio.rhcloud.com/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>nexus-heynowio-snapshots</id>
+            <name>nexus-heynowio-snapshots</name>
+            <url>https://nexus-heynowio.rhcloud.com/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

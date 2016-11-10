@@ -1,8 +1,8 @@
 package io.heynow.sink.email.processor;
 
-import io.heynow.sink.email.client.StreamManagerClient;
 import io.heynow.sink.email.model.AlertEvent;
 import io.heynow.sink.email.service.EmailService;
+import io.heynow.stream.manager.client.facade.StreamManagerClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,11 +25,11 @@ public class AlertEventProcessorImpl implements AlertEventProcessor {
     @Override
     public void process(AlertEvent alertEvent) {
         log.info("Processing alert event: {}", alertEvent);
-        Map<String, String> properties = streamManagerClient.getOperatorDefinition("DUMMY").getPropertyMap(); //TODO: cache
+        Map<String, Object> properties = streamManagerClient.getProperties(alertEvent.getOperatorId());
         emailService.sendEmail(
-                properties.get("recipient"),
-                properties.get("subject"),
-                alertEvent.getPayload()
+                (String) properties.get("recipient"),
+                (String) properties.get("subject"),
+                alertEvent.getPayload().toString()
         );
     }
 }
