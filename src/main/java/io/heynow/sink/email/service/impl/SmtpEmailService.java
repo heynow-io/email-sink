@@ -27,14 +27,14 @@ public class SmtpEmailService implements EmailService {
                         properties.getUsername(),
                         properties.getPassword()
                 ),
-                TransportStrategy.SMTP_TLS
+                properties.getTransport()
         );
     }
 
     @Override
     public void sendEmail(String recipient, String subject, String payload) {
         Email email = new EmailBuilder()
-                .from(properties.getUsername(), properties.getUsername())
+                .from(properties.getFromName() != null ? properties.getFromName() : properties.getFromAddress(), properties.getFromAddress())
                 .to(recipient, recipient)
                 .subject(subject)
                 .textHTML(payload)
